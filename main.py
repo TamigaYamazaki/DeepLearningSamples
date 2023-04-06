@@ -10,4 +10,4 @@ def collect_YouTube_Data(URL, months):
     df = df = pd.DataFrame(video_datas, columns=["video_id", "view_count", "like_count", "comment_count", "tags"])
     df.to_csv("Datas/data_test.csv", sep=",")
 
-collect_YouTube_Data("https://www.youtube.com/@HikakinTV", 12)
+#collect_YouTube_Data("https://www.youtube.com/@HikakinTV", 72)
