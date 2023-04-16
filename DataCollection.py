@@ -113,13 +113,13 @@ class VideoList_csv:
         for item in video_ids:
             datas = self.get_datas(item)
             video_datas_statistics.append(datas[1])
-            video_datas_snippet.append(datas[0]["snippet"])
+            video_datas_snippet.append(datas[0]["snippet"].get("tags"))
         #print(video_datas[0]["likeCount"])
 
         """DataFrame作成"""
         for i in range(0, len(video_datas_statistics)):
             list = [video_ids[i], video_datas_statistics[i]["viewCount"], video_datas_statistics[i]["likeCount"], 
-                    video_datas_statistics[i]["commentCount"], video_datas_snippet[i].get("tags")]
+                    video_datas_statistics[i]["commentCount"], list(video_datas_snippet[i])]
             self.lists.append(list)
         print(self.lists)
         
