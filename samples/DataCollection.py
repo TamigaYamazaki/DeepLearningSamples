@@ -143,3 +143,9 @@ def omit_string(sentence, sprit_word) -> str:
 
 #data = VideoList_csv(None).get_datas("TvRVcN-fJLE")[0]["snippet"]["tags"]
 #print(data)
+
+def collect_YouTube_Data(URL, months):
+    id_type = GetChannelID_from_URL(URL).GetURLtype()
+    video_datas = VideoList_csv(id_type).get_video_list(month=months)
+    df = df = pd.DataFrame(video_datas, columns=["video_id", "view_count", "like_count", "comment_count", "tags"])
+    df.to_csv("Datas/Data_Pocky.csv", sep=",")

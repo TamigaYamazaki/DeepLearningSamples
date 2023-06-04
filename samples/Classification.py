@@ -23,17 +23,17 @@ def training():
 
     callbacks = [tf.keras.callbacks.EarlyStopping(patience=2, restore_best_weights=True)]
 
-    history = model.fit(x_train, y_train, batch_size=128, epochs=20,
+    model.fit(x_train, y_train, batch_size=128, epochs=20,
                         validation_split=0.2, callbacks=callbacks)
 
     test_loss, test_acc = model.evaluate(x_test, y_test, verbose=0)
     print(test_loss)
     print(test_acc)
 
-    model.save("Datas/Models/mnist_model.h5")
+    model.save("Datas/Models/mnist_classification_model.h5")
 
 def Load_Model():
-    model = tf.keras.models.load_model("./Datas/Models/mnist_model.h5")
+    model = tf.keras.models.load_model("./Datas/Models/mnist_classification_model.h5")
 
     for i in range(1, 10):    
         img = Image.open(f"./Datas/img/{i}.png").convert("L").resize((28, 28))
